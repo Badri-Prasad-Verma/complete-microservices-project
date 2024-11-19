@@ -27,6 +27,8 @@ public class SecurityConfig {
                 .permitAll()
                 .requestMatchers("/api/users/**")
                 .permitAll()
+                .requestMatchers("/reports/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
