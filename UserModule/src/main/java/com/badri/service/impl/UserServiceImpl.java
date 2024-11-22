@@ -157,5 +157,20 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(user);
 
     }
+    @Override
+    public UserResponseDTO findUserByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User", "userId", userId));
+        UserResponseDTO responseDTO = UserResponseDTO.builder()
+                .id(user.getId()).firstName(user.getFirstName())
+                .middleName(user.getMiddleName()).lastName(user.getLastName())
+                .email(user.getEmail()).phoneNumber(user.getPhoneNumber())
+                .password(user.getPassword()).address(user.getAddress())
+                .isActive(user.isActive()).gender(user.getGender())
+                .createdOn(user.getCreatedOn()).updatedOn(user.getUpdatedOn())
+                .build();
+
+        return responseDTO;
+    }
 
 }

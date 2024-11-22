@@ -12,4 +12,5 @@ public interface UserService {
     PaginationRequestDto<UserResponseDTO> getAllUsers(int page, int size);
     UserResponseDTO updateUser(Long id,UserRequestDto requestDto);
     void deleteUserByUserId(Long id);
+    UserResponseDTO findUserByUserId(Long userId);
 }
